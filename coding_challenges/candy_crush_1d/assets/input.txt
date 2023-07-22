@@ -1,0 +1,8 @@
+aaabbbc
+c
+aabbbacd
+cd
+aabbccddeeedcba
+-
+aaabbbacd
+acd

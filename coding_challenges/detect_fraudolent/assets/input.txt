@@ -1,0 +1,13 @@
+6
+Anna 10 0 London
+Anna 2000 50 London
+Jack 50 60 London
+Jack 250 130 London
+Jack 500 160 New York
+Juan 1000 170 Valencia
+Juan 100 270 Valencia
+4
+Anna 2000 50 London
+Jack 50 60 London
+Jack 250 130 London
+Jack 500 160 New York

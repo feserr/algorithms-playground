@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/FriendlyCodingPals/judgment-of-paris#license
  */
 
@@ -12,8 +12,6 @@
 #include <unordered_map>
 #include <utility>
 #include <vector>
-
-using namespace std;
 
 template <class T, class U>
 class LRU {
@@ -66,7 +64,7 @@ class LRU {
    * @param key The key.
    * @return optional<lru_pair_type> The value if exist.
    */
-  optional<U> get(const T& key) {
+  std::optional<U> get(const T& key) {
     auto element_map_iterator = elements_map_.find(key);
     if (element_map_iterator == elements_map_.end()) {
       return {};
@@ -80,8 +78,8 @@ class LRU {
    *
    * @return vector<lru_pair_type> The elements.
    */
-  vector<lru_pair_type> getAll() {
-    vector<lru_pair_type> elements(elements_list_.size());
+  std::vector<lru_pair_type> getAll() {
+    std::vector<lru_pair_type> elements(elements_list_.size());
 
     copy(elements_list_.begin(), elements_list_.end(), elements.begin());
 
@@ -92,8 +90,8 @@ class LRU {
   typedef typename std::list<lru_pair_type>::iterator element_list_iterator_;
 
   int max_capacity_;
-  list<lru_pair_type> elements_list_;
-  unordered_map<T, element_list_iterator_> elements_map_;
+  std::list<lru_pair_type> elements_list_;
+  std::unordered_map<T, element_list_iterator_> elements_map_;
 };
 
 #endif  // LRU_H_

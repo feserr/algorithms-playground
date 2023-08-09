@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
@@ -62,8 +62,7 @@ class Stack {
   }
 
   void Pop() {
-    if (m_head == nullptr || m_tail == nullptr)
-      return;
+    if (m_head == nullptr || m_tail == nullptr) return;
 
     auto node = m_tail;
     m_tail = m_tail->prev;
@@ -85,9 +84,7 @@ class Stack {
     return m_tail->data;
   }
 
-  uint32_t Size() {
-    return m_size;
-  }
+  uint32_t Size() { return m_size; }
 
  private:
   Node<T>* m_head;

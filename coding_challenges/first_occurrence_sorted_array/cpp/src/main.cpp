@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/FriendlyCodingPals/judgment-of-paris#license
  */
 
@@ -12,31 +12,29 @@
 
 #include "NumSearch.h"
 
-using namespace std;
-
 struct TestInput {
-  vector<int> input;
-  vector<pair<int, int>> solution;
+  std::vector<int> input;
+  std::vector<std::pair<int, int>> solution;
 };
 
-vector<TestInput> ReadInput(const string& file_path) {
-  vector<TestInput> input_vector;
+std::vector<TestInput> ReadInput(const std::string& file_path) {
+  std::vector<TestInput> input_vector;
 
   std::ifstream infile(file_path);
-  string numbers;
+  std::string numbers;
   while (getline(infile, numbers)) {
     TestInput test_input;
 
     std::istringstream is(numbers);
     int number;
     while (is >> number) {
-      test_input.input.emplace_back((int)number);
+      test_input.input.emplace_back(static_cast<int>(number));
     }
 
     int num_solutions = 0;
     infile >> num_solutions;
 
-    test_input.solution = vector<pair<int, int>>(num_solutions);
+    test_input.solution = std::vector<std::pair<int, int>>(num_solutions);
 
     for (int index = 0; index < num_solutions; ++index) {
       int search_number, solution;
@@ -52,28 +50,28 @@ vector<TestInput> ReadInput(const string& file_path) {
 
 int main(int argc, char** argv) {
   if (argc != 2) {
-    cerr << "Wrong arguments" << endl;
+    std::cerr << "Wrong arguments" << std::endl;
     return 1;
   }
 
-  vector<TestInput> test_inputs = ReadInput(argv[1]);
+  std::vector<TestInput> test_inputs = ReadInput(argv[1]);
 
   int case_index = 1;
   for (const auto& test_input : test_inputs) {
     NumSearch numSearch;
 
-    cout << "Case #" << case_index;
+    std::cout << "Case #" << case_index;
 
     if (any_of(test_input.solution.begin(), test_input.solution.end(),
                [&numSearch, &test_input](const auto& solution) {
                  return numSearch.Search(test_input.input, solution.first) !=
                         solution.second;
                })) {
-      cout << " FAIL" << endl;
+      std::cout << " FAIL" << std::endl;
       return 1;
     }
 
-    cout << " OK" << endl;
+    std::cout << " OK" << std::endl;
 
     ++case_index;
   }

@@ -1,19 +1,19 @@
 /*
- * Copyright 2021 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
 #include <iostream>
 #include <string>
 
-using namespace std;
-
 const int kLetterA = 'A';
 const int kLetterZ = 'Z';
 
-bool IsLetter(const char letter) { return letter >= kLetterA && letter <= kLetterZ; }
+bool IsLetter(const char letter) {
+  return letter >= kLetterA && letter <= kLetterZ;
+}
 
-string RepeatTimes(const std::string& str) {
+std::string RepeatTimes(const std::string& str) {
   size_t pos = 0;
   for (; pos < str.size(); ++pos) {
     if (IsLetter(str[pos]) || str[pos] == '(') break;
@@ -44,11 +44,13 @@ std::string Decompress(const std::string& compress_str, int repeat = 1) {
           }
 
           if (!brackets) {
-            std::string to_repeat_str = compress_str.substr(pos + 1, end_pos - pos - 1);
+            std::string to_repeat_str =
+                compress_str.substr(pos + 1, end_pos - pos - 1);
             std::string repeat_number = RepeatTimes(to_repeat_str);
 
-            decompress_str += Decompress(to_repeat_str.substr(repeat_number.size()),
-                                         atoi(repeat_number.c_str()));
+            decompress_str +=
+                Decompress(to_repeat_str.substr(repeat_number.size()),
+                           atoi(repeat_number.c_str()));
             break;
           }
 

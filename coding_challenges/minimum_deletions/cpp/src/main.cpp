@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
@@ -9,22 +9,20 @@
 #include <string>
 #include <unordered_map>
 
-using namespace std;
-
-int MinDeletions(string s) {
-  unordered_map<char, int> letters;
+int MinDeletions(std::string s) {
+  std::unordered_map<char, int> letters;
 
   for (const auto& letter : s) {
     ++letters[letter];
   }
 
-  priority_queue<int, vector<int>, greater<int>> frequency;
+  std::priority_queue<int, std::vector<int>, std::greater<int>> frequency;
   for (const auto& letter_freq : letters) {
     frequency.emplace(letter_freq.second);
   }
 
   int removed = 0;
-  stack<pair<int, int>> slots_left;
+  std::stack<std::pair<int, int>> slots_left;
 
   int top = frequency.top();
   if (top - 1 > 0) slots_left.emplace(top - 1, top - 1);
@@ -60,10 +58,11 @@ int MinDeletions(string s) {
 }
 
 int main(int argc, char** argv) {
-  int res =
-      MinDeletions("jbddhjemmnhaflahionjoddojoliimdcailihfdleahgbafnknblkheeicoonffenhhmgfhgmnjk");
+  int res = MinDeletions(
+      "jbddhjemmnhaflahionjoddojoliimdcailihfdleahgbafnknblkheeicoonffenhhmgfhg"
+      "mnjk");
 
-  cout << res << endl;
+  std::cout << res << std::endl;
 
   return 0;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/feserr/algorithms-playground#license
  */
 

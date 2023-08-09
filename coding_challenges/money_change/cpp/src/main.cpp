@@ -1,29 +1,21 @@
 /*
- * Copyright 2022 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
 #include <iostream>
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
-using namespace std;
+std::vector<uint32_t> coins = {1, 2, 5, 10, 20, 50, 100, 200};
 
-vector<uint32_t> coins = {1, 2, 5, 10, 20, 50, 100, 200};
+std::unordered_map<uint32_t, float> machine_coins = {
+    {1, 0.01f}, {2, 0.02f}, {5, 0.05f},  {10, 0.1f},
+    {20, 0.2f}, {50, 0.5f}, {100, 1.0f}, {200, 2.0f}};
 
-unordered_map<uint32_t, float> machine_coins = {
-  {1, 0.01f},
-  {2, 0.02f},
-  {5, 0.05f},
-  {10, 0.1f},
-  {20, 0.2f},
-  {50, 0.5f},
-  {100, 1.0f},
-  {200, 2.0f}};
-
-vector<float> MoneyChange(const uint32_t money) {
-  vector<uint32_t> amount_coins(money + 1, 0);
-  vector<uint32_t> value_coins(money + 1, 0);
+std::vector<float> MoneyChange(const uint32_t money) {
+  std::vector<uint32_t> amount_coins(money + 1, 0);
+  std::vector<uint32_t> value_coins(money + 1, 0);
 
   for (uint32_t amount = 1; amount <= money; ++amount) {
     for (const auto& coin : coins) {
@@ -37,7 +29,7 @@ vector<float> MoneyChange(const uint32_t money) {
     }
   }
 
-  vector<float> change;
+  std::vector<float> change;
   change.reserve(money);
   uint32_t pos = money;
   while (pos > 0) {
@@ -62,12 +54,12 @@ int main(int argc, char** argv) {
       ++amount;
       last_coin = coin;
     } else {
-      cout << amount << " " << last_coin << "£" << endl;
+      std::cout << amount << " " << last_coin << "£" << std::endl;
       amount = 1;
       last_coin = coin;
     }
   }
-  cout << amount << " " << last_coin << "£" << endl;
+  std::cout << amount << " " << last_coin << "£" << std::endl;
 
   return 0;
 }

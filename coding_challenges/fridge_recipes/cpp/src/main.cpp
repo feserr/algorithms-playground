@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
@@ -9,16 +9,14 @@
 #include <unordered_set>
 #include <vector>
 
-using namespace std;
-
 struct Ingredient {
-  string name;
+  std::string name;
   uint32_t amount;
 };
 
 struct Recipe {
-  string name;
-  unordered_set<Ingredient> ingredients;
+  std::string name;
+  std::unordered_set<Ingredient> ingredients;
 };
 
 class Fridge {
@@ -26,9 +24,9 @@ class Fridge {
     // inits the private members.
   }
 
-  vector<Recipe> GetPossibleRecipes() {
-    vector<Recipe> possible_recipes;
-    unordered_map<Recipe, int> partial_recipe;
+  std::vector<Recipe> GetPossibleRecipes() {
+    std::vector<Recipe> possible_recipes;
+    std::unordered_map<Recipe, int> partial_recipe;
 
     for (const auto& ingredient : ingredients_) {
       auto recipes_iterator = recipes_from_ingredient_.find(ingredient);
@@ -53,9 +51,9 @@ class Fridge {
   }
 
  private:
-  vector<Ingredient> ingredients_;
-  list<Recipe> recipes_;
-  unordered_map<Ingredient, list<Recipe*>> recipes_from_ingredient_;
+  std::vector<Ingredient> ingredients_;
+  std::list<Recipe> recipes_;
+  std::unordered_map<Ingredient, std::list<Recipe*>> recipes_from_ingredient_;
 };
 
 int main(int argc, char** argv) {

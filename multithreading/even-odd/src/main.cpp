@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
@@ -25,8 +25,7 @@ uint32_t num = 0;
 void PrintNumber(const bool even_odd) {
   while (num < kEnd) {
     std::unique_lock<std::mutex> mut_lock(mut);
-    cond_var.wait(
-        mut_lock, [even_odd] { return num % 2 == even_odd; });
+    cond_var.wait(mut_lock, [even_odd] { return num % 2 == even_odd; });
     std::cout << num << " ";
     ++num;
     cond_var.notify_one();

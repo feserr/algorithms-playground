@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/FriendlyCodingPals/judgment-of-paris#license
  */
 
@@ -13,10 +13,10 @@ struct Candy {
   int amount;
 };
 
-string CandyCrash1D::GreedyCrush(const string& candies) {
-  stack<Candy> candies_stack;
+std::string CandyCrash1D::GreedyCrush(const std::string& candies) {
+  std::stack<Candy> candies_stack;
 
-  for (const char candy : candies) {
+  for (const auto& candy : candies) {
     if (candies_stack.empty()) {
       candies_stack.emplace(candy, 1);
       continue;
@@ -40,12 +40,13 @@ string CandyCrash1D::GreedyCrush(const string& candies) {
     candies_stack.pop();
   }
 
-  string remain_candies = "";
+  std::string remain_candies = "";
   while (!candies_stack.empty()) {
     const auto& candy_stack_top = candies_stack.top();
     candies_stack.pop();
 
-    string candy_stack_top_str = string(candy_stack_top.amount, candy_stack_top.type);
+    std::string candy_stack_top_str =
+        std::string(candy_stack_top.amount, candy_stack_top.type);
     remain_candies = candy_stack_top_str + remain_candies;
   }
 

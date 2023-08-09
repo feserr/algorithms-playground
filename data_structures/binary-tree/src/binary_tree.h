@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
@@ -8,8 +8,6 @@
 
 #include <queue>
 #include <stack>
-
-using namespace std;
 
 template <class T>
 struct Node {
@@ -29,7 +27,7 @@ class BinaryTree {
   BinaryTree() : root_(), size_(0) {}
 
   ~BinaryTree() {
-    queue<Node<T>*> nodes;
+    std::queue<Node<T>*> nodes;
     nodes.emplace(root_);
 
     while (!nodes.empty()) {
@@ -77,11 +75,11 @@ class BinaryTree {
 
   void dfsRecursivePrint() {
     recPrint(root_);
-    cout << endl;
+    std::cout << std::endl;
   }
 
   void dfsIterativePrint() {
-    stack<Node<T>*> nodes;
+    std::stack<Node<T>*> nodes;
     Node<T>* node = root_;
 
     while (!nodes.empty() || node) {
@@ -93,16 +91,16 @@ class BinaryTree {
       node = nodes.top();
       nodes.pop();
 
-      cout << node->data << " ";
+      std::cout << node->data << " ";
 
       node = node->right;
     }
 
-    cout << endl;
+    std::cout << std::endl;
   }
 
   void bfsPrint() {
-    queue<Node<T>*> nodes;
+    std::queue<Node<T>*> nodes;
     nodes.emplace(root_);
 
     while (!nodes.empty()) {
@@ -111,12 +109,12 @@ class BinaryTree {
 
       if (!node) continue;
 
-      cout << node->data << " ";
+      std::cout << node->data << " ";
       nodes.emplace(node->left);
       nodes.emplace(node->right);
     }
 
-    cout << endl;
+    std::cout << std::endl;
   }
 
  private:
@@ -124,7 +122,7 @@ class BinaryTree {
     if (!node) return;
 
     recPrint(node->left);
-    cout << node->data << " ";
+    std::cout << node->data << " ";
     recPrint(node->right);
   }
 

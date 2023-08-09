@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/FriendlyCodingPals/judgment-of-paris#license
  */
 
@@ -7,9 +7,6 @@
 #define NUM_SEARCH_H_
 
 #include <vector>
-
-using namespace std;
-
 class NumSearch {
  public:
   /**
@@ -24,7 +21,7 @@ class NumSearch {
    * @param num_to_search The number to search
    * @return int The position of the number if found, otherwise -1.
    */
-  static int Search(const vector<int>& numbers, const int num_to_search);
+  static int Search(const std::vector<int>& numbers, const int num_to_search);
 };
 
 #endif  // NUM_SEARCH_H_

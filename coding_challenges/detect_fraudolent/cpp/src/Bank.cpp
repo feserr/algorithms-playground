@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/FriendlyCodingPals/judgment-of-paris#license
  */
 
@@ -7,12 +7,12 @@
 
 #include <algorithm>
 #include <fstream>
-#include <vector>
 
 const int kMaxAmount = 1000;
 const int kMaxTime = 60;
 
-vector<string> Bank::AddTransaction(const string& transaction_string) {
+std::vector<std::string> Bank::AddTransaction(
+    const std::string& transaction_string) {
   Transaction transaction = ParseTransaction(transaction_string);
 
   if (transaction.amount > kMaxAmount) {
@@ -30,7 +30,7 @@ vector<string> Bank::AddTransaction(const string& transaction_string) {
     return {transaction.ToString()};
   } else if (transaction_iterator->second.front().location !=
              transaction.location) {
-    vector<string> fraudolent_transactions;
+    std::vector<std::string> fraudolent_transactions;
     fraudolent_transactions.reserve(transaction_iterator->second.size() + 1);
 
     transform(transaction_iterator->second.begin(),
@@ -46,9 +46,9 @@ vector<string> Bank::AddTransaction(const string& transaction_string) {
   return {};
 }
 
-Transaction Bank::ParseTransaction(const string& transaction) {
+Transaction Bank::ParseTransaction(const std::string& transaction) {
   std::ifstream infile(transaction);
-  string name, location;
+  std::string name, location;
   int amount, time;
 
   infile >> name >> amount >> time >> location;

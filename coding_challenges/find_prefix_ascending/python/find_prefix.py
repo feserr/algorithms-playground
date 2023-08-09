@@ -58,6 +58,8 @@ class FindPrefix:
         else:
             self.continium_bin_search(words, prefix, middle + 1, right)
 
+        return None
+
     def find(self, words: List[str], prefix: str) -> List[str]:
         """Find the words with the prefix.
 

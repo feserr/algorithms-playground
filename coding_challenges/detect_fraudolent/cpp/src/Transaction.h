@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Elías Serrano. All rights reserved.
+ * Copyright 2023 Elías Serrano. All rights reserved.
  * License: https://github.com/FriendlyCodingPals/judgment-of-paris#license
  */
 
@@ -8,16 +8,14 @@
 
 #include <string>
 
-using namespace std;
-
 struct Transaction {
-  string name;
+  std::string name;
   int amount;
   int time;
-  string location;
+  std::string location;
 
-  string ToString() {
-    return name + " " + to_string(amount) + " " + to_string(time) + " " + location;
+  std::string ToString() {
+    return name + " " + std::to_string(amount) + " " + std::to_string(time) + " " + location;
   }
 };
 

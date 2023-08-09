@@ -2,8 +2,12 @@ cmake_minimum_required(VERSION 3.20)
 
 set(TARGET_NAME decompressor)
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/../assets/input.txt
+     DESTINATION ${CMAKE_BINARY_DIR}/${TARGET_NAME}/)
+
 # Set the source files.
 set(SOURCES
+  src/Decompressor.cpp
   src/main.cpp
 )
 

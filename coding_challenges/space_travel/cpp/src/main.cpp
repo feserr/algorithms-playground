@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
 
   for (const auto& position : output) {
     std::cout << "[" << position.x << "," << position.y << "]"
-         << ",";
+              << ",";
   }
   std::cout << std::endl;
 }

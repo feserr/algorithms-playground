@@ -3,8 +3,8 @@
  * License: https://github.com/FriendlyCodingPals/judgment-of-paris#license
  */
 
-#ifndef BANK_H_
-#define BANK_H_
+#ifndef CODING_CHALLENGES_DETECT_FRAUDOLENT_CPP_SRC_BANK_H_
+#define CODING_CHALLENGES_DETECT_FRAUDOLENT_CPP_SRC_BANK_H_
 
 #include <string>
 #include <unordered_map>
@@ -14,8 +14,7 @@
 
 class Bank {
  public:
-  std::vector<std::string> AddTransaction(
-      const std::string& transaction_string);
+  std::vector<std::string> AddTransaction(const std::string& transaction_string);
 
  private:
   Transaction ParseTransaction(const std::string& transaction);
@@ -23,4 +22,4 @@ class Bank {
   std::unordered_map<std::string, std::vector<Transaction>> transactions_map_;
 };
 
-#endif  // BANK_H_
+#endif  // CODING_CHALLENGES_DETECT_FRAUDOLENT_CPP_SRC_BANK_H_

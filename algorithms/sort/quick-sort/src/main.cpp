@@ -5,6 +5,7 @@
 
 #include <inttypes.h>
 #include <stdio.h>
+
 #include <algorithm>
 
 void PrintData(const int* data, const int size) {

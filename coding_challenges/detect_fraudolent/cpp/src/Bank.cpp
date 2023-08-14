@@ -11,8 +11,7 @@
 const int kMaxAmount = 1000;
 const int kMaxTime = 60;
 
-std::vector<std::string> Bank::AddTransaction(
-    const std::string& transaction_string) {
+std::vector<std::string> Bank::AddTransaction(const std::string& transaction_string) {
   Transaction transaction = ParseTransaction(transaction_string);
 
   if (transaction.amount > kMaxAmount) {
@@ -25,16 +24,13 @@ std::vector<std::string> Bank::AddTransaction(
     return {};
   }
 
-  if (abs(transaction_iterator->second.back().time - transaction.time) <=
-      kMaxTime) {
+  if (abs(transaction_iterator->second.back().time - transaction.time) <= kMaxTime) {
     return {transaction.ToString()};
-  } else if (transaction_iterator->second.front().location !=
-             transaction.location) {
+  } else if (transaction_iterator->second.front().location != transaction.location) {
     std::vector<std::string> fraudolent_transactions;
     fraudolent_transactions.reserve(transaction_iterator->second.size() + 1);
 
-    transform(transaction_iterator->second.begin(),
-              transaction_iterator->second.end(),
+    transform(transaction_iterator->second.begin(), transaction_iterator->second.end(),
               back_inserter(fraudolent_transactions),
               [](Transaction& trans) { return trans.ToString(); });
 

@@ -36,8 +36,8 @@ int main(int argc, char** argv) {
 
     if (remain_candies != test_input.solution) {
       std::cout << " FAIL" << std::endl;
-      std::cerr << "Wrong answer:\n\tExpected '" << test_input.solution
-                << "'\n\tOutput: '" << remain_candies << "'" << std::endl;
+      std::cerr << "Wrong answer:\n\tExpected '" << test_input.solution << "'\n\tOutput: '"
+                << remain_candies << "'" << std::endl;
       return 1;
     }
 

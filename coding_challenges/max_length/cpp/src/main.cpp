@@ -9,8 +9,7 @@
 #include <unordered_set>
 #include <vector>
 
-int Rec(const std::vector<std::string>& arr, int pos,
-        const std::unordered_set<char>& word) {
+int Rec(const std::vector<std::string>& arr, int pos, const std::unordered_set<char>& word) {
   if (pos >= arr.size()) {
     return 0;
   } else if (pos == arr.size() - 1) {

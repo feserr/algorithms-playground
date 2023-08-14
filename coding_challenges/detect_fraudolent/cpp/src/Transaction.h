@@ -3,8 +3,8 @@
  * License: https://github.com/FriendlyCodingPals/judgment-of-paris#license
  */
 
-#ifndef TRANSACTION_H_
-#define TRANSACTION_H_
+#ifndef CODING_CHALLENGES_DETECT_FRAUDOLENT_CPP_SRC_TRANSACTION_H_
+#define CODING_CHALLENGES_DETECT_FRAUDOLENT_CPP_SRC_TRANSACTION_H_
 
 #include <string>
 
@@ -19,4 +19,4 @@ struct Transaction {
   }
 };
 
-#endif  // TRANSACTION_H_
+#endif  // CODING_CHALLENGES_DETECT_FRAUDOLENT_CPP_SRC_TRANSACTION_H_

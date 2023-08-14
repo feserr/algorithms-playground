@@ -17,8 +17,8 @@ int main(int argc, char** argv) {
 
     std::string case_solution = Decompressor::Decompress(compressed_str);
     if (expected != case_solution) {
-      std::cout << std::format("FAILED\nCase {}: expected '{}' got '{}',",
-                               num_case, expected, case_solution)
+      std::cout << std::format("FAILED\nCase {}: expected '{}' got '{}',", num_case, expected,
+                               case_solution)
                 << std::endl;
     }
 

@@ -18,9 +18,7 @@ class Graph {
  public:
   Graph() : num_verts_(0), nodes_() {}
 
-  explicit Graph(uint32_t num_verts) : num_verts_(num_verts) {
-    nodes_.resize(num_verts);
-  }
+  explicit Graph(uint32_t num_verts) : num_verts_(num_verts) { nodes_.resize(num_verts); }
 
   void AddEdge(int vertice, int value) { nodes_[vertice].emplace_back(value); }
 

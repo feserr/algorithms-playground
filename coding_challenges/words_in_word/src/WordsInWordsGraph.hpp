@@ -3,6 +3,9 @@
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
+#ifndef CODING_CHALLENGES_WORDS_IN_WORD_SRC_WORDSINWORDSGRAPH_HPP_
+#define CODING_CHALLENGES_WORDS_IN_WORD_SRC_WORDSINWORDSGRAPH_HPP_
+
 #include <list>
 #include <queue>
 #include <string>
@@ -25,9 +28,7 @@ struct WordState {
 
   WordState(WordNode* word_node, int index = 0,
             const std::vector<std::string>& word_composition = {})
-      : index(index),
-        word_composition(word_composition),
-        word_node(word_node) {}
+      : index(index), word_composition(word_composition), word_node(word_node) {}
 };
 
 class WordsInWordGraph : public IWordsInWord {
@@ -53,8 +54,7 @@ class WordsInWordGraph : public IWordsInWord {
     }
   }
 
-  std::vector<WordsComposition> GetPossibleWords(
-      const std::vector<std::string>& words) override {
+  std::vector<WordsComposition> GetPossibleWords(const std::vector<std::string>& words) override {
     LoadWords(words);
 
     for (const auto& word : words) {
@@ -102,13 +102,11 @@ class WordsInWordGraph : public IWordsInWord {
 
         word_state.word_composition.emplace_back(word);
         if (word_state.index == base_word.size()) {
-          possible_words_in_word_.emplace_back(base_word,
-                                               word_state.word_composition);
+          possible_words_in_word_.emplace_back(base_word, word_state.word_composition);
           break;
         }
 
-        word_states->emplace(word_state.word_node, word_state.index,
-                            word_state.word_composition);
+        word_states->emplace(word_state.word_node, word_state.index, word_state.word_composition);
       }
     }
   }
@@ -117,3 +115,5 @@ class WordsInWordGraph : public IWordsInWord {
   std::list<WordNode> word_nodes_;
   std::vector<WordsComposition> possible_words_in_word_;
 };
+
+#endif  // CODING_CHALLENGES_WORDS_IN_WORD_SRC_WORDSINWORDSGRAPH_HPP_

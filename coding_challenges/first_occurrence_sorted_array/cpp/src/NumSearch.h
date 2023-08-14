@@ -3,8 +3,8 @@
  * License: https://github.com/FriendlyCodingPals/judgment-of-paris#license
  */
 
-#ifndef NUM_SEARCH_H_
-#define NUM_SEARCH_H_
+#ifndef CODING_CHALLENGES_FIRST_OCCURRENCE_SORTED_ARRAY_CPP_SRC_NUMSEARCH_H_
+#define CODING_CHALLENGES_FIRST_OCCURRENCE_SORTED_ARRAY_CPP_SRC_NUMSEARCH_H_
 
 #include <vector>
 class NumSearch {
@@ -24,4 +24,4 @@ class NumSearch {
   static int Search(const std::vector<int>& numbers, const int num_to_search);
 };
 
-#endif  // NUM_SEARCH_H_
+#endif  // CODING_CHALLENGES_FIRST_OCCURRENCE_SORTED_ARRAY_CPP_SRC_NUMSEARCH_H_

@@ -64,8 +64,7 @@ int main(int argc, char** argv) {
 
     if (any_of(test_input.solution.begin(), test_input.solution.end(),
                [&numSearch, &test_input](const auto& solution) {
-                 return numSearch.Search(test_input.input, solution.first) !=
-                        solution.second;
+                 return numSearch.Search(test_input.input, solution.first) != solution.second;
                })) {
       std::cout << " FAIL" << std::endl;
       return 1;

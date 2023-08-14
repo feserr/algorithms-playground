@@ -7,6 +7,7 @@
 #define DATA_STRUCTURES_HASH_TABLE_SRC_HASH_TABLE_H_
 
 #include <stdlib.h>
+
 #include <vector>
 
 const int kSize = 100;
@@ -65,8 +66,7 @@ class HashTable {
       HashData<T>* data_aux = new HashData<T>[data[key]->Size()];
       int iter = 0;
       for (; iter < data[key]->Size(); ++iter) {
-        data_aux[iter] =
-            HashData<T>(data[key][iter].key, data[key][iter].value);
+        data_aux[iter] = HashData<T>(data[key][iter].key, data[key][iter].value);
         data_aux[0].IncressSize();
       }
       data_aux[iter] = HashData<T>(key, value);
@@ -89,8 +89,7 @@ class HashTable {
     for (size_t iter = 0; iter < data[key]->Size(); ++iter) {
       if (data[key][iter].value == value) {
         if (iter < data[key]->Size()) {
-          for (size_t current_iter = iter; current_iter < data[key]->Size() - 1;
-               ++current_iter) {
+          for (size_t current_iter = iter; current_iter < data[key]->Size() - 1; ++current_iter) {
             data[key][current_iter] = data[key][current_iter + 1];
           }
         } else {

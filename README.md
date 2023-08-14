@@ -30,17 +30,29 @@
 
 # Coding challenges
 
-- Decompressor
-- Max length
-- Minimum deletions
+- Decompressor.
+- Max length.
+- Minimum deletions.
+- Detect fraudolent.
+- Differ by one.
+- Find prefix ascending.
+- First occurrence sorted array.
+- Max length.
+- Minimum deletions.
+- Minimum flights.
+- Money change.
+- Most recent browser history.
+- Space travel.
+- Words in word.
 
 # Data structures
 
 - Array list.
+- Binary tree.
 - Hash table.
 - Linked list
-- LRU
-- Stack
+- LRU.
+- Stack.
 - String builder.
 
 # Multithreading

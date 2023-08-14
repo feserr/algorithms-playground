@@ -17,8 +17,9 @@ target_include_directories(${TARGET_NAME}
     src
     ../../../data_structures)
 
-target_compile_options(${TARGET_NAME} PRIVATE -fsanitize=address)
-target_link_options(${TARGET_NAME} PRIVATE -fsanitize=address)
 
+include(CheckAsan)
+target_compile_options(${TARGET_NAME} PRIVATE ${CMAKE_ADDRESS_SANITIZER_FLAG})
+target_link_options(${TARGET_NAME} PRIVATE ${CMAKE_ADDRESS_SANITIZER_FLAG})
 set_property(TARGET ${TARGET_NAME} PROPERTY C_STANDARD 23)
 set_property(TARGET ${TARGET_NAME} PROPERTY CXX_STANDARD 23)

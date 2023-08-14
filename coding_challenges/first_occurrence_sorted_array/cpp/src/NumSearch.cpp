@@ -5,8 +5,7 @@
 
 #include "NumSearch.h"
 
-int NumSearch::Search(const std::vector<int>& numbers,
-                      const int num_to_search) {
+int NumSearch::Search(const std::vector<int>& numbers, const int num_to_search) {
   int start = 0;
   int end = numbers.size() - 1;
 

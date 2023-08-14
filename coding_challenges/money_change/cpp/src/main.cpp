@@ -3,15 +3,16 @@
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
+#include <cstdint>
 #include <iostream>
 #include <unordered_map>
 #include <vector>
 
 std::vector<uint32_t> coins = {1, 2, 5, 10, 20, 50, 100, 200};
 
-std::unordered_map<uint32_t, float> machine_coins = {
-    {1, 0.01f}, {2, 0.02f}, {5, 0.05f},  {10, 0.1f},
-    {20, 0.2f}, {50, 0.5f}, {100, 1.0f}, {200, 2.0f}};
+std::unordered_map<uint32_t, float> machine_coins = {{1, 0.01f},  {2, 0.02f}, {5, 0.05f},
+                                                     {10, 0.1f},  {20, 0.2f}, {50, 0.5f},
+                                                     {100, 1.0f}, {200, 2.0f}};
 
 std::vector<float> MoneyChange(const uint32_t money) {
   std::vector<uint32_t> amount_coins(money + 1, 0);

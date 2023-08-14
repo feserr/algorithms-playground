@@ -1,4 +1,4 @@
-name: Build 🛠
+name: Lint ✅
 
 on:
   push:
@@ -12,18 +12,12 @@ on:
 
 jobs:
   run-linters:
-    name: Run linters
+    name: Check lint
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v2
-
-      - name: Set up GCC
-        uses: egor-tensin/setup-gcc@v1
-        with:
-          version: latest
-          platform: x64
+        uses: actions/checkout@v3
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -34,16 +28,5 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
 
-      - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.13
-        with:
-          cmake-version: '3.27.x'
-
-      - name: Setup Ninja
-        uses: seanmiddleditch/gha-setup-ninja@master
-
-      - name: Configure
-        run: cmake -S./ -B./build -G Ninja
-
-      - name: Build
-        run: cmake --build ./build --target all
+      - name: Run cpplint
+        run: cpplint --recursive .

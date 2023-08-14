@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
     for (const auto& transaction : test_input.input) {
       auto fraudolent_at_transaction = bank.AddTransaction(transaction);
       std::copy(fraudolent_at_transaction.begin(), fraudolent_at_transaction.end(),
-           std::back_inserter(fraudolent_transactions));
+                std::back_inserter(fraudolent_transactions));
     }
 
     if (!equal(test_input.solution.begin(), test_input.solution.end(),

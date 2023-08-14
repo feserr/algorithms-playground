@@ -3,8 +3,8 @@
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
-#ifndef LINKED_LIST_H_
-#define LINKED_LIST_H_
+#ifndef DATA_STRUCTURES_LINKED_LIST_SRC_LINKED_LIST_H_
+#define DATA_STRUCTURES_LINKED_LIST_SRC_LINKED_LIST_H_
 
 #include <algorithm>
 #include <iostream>
@@ -60,4 +60,4 @@ class LinkedList {
   Data<T>* root;
 };
 
-#endif  // LINKED_LIST_H_
+#endif  // DATA_STRUCTURES_LINKED_LIST_SRC_LINKED_LIST_H_

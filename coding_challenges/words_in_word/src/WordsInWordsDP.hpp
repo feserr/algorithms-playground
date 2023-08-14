@@ -3,8 +3,12 @@
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
-#include <algorithm>
+#ifndef CODING_CHALLENGES_WORDS_IN_WORD_SRC_WORDSINWORDSDP_HPP_
+#define CODING_CHALLENGES_WORDS_IN_WORD_SRC_WORDSINWORDSDP_HPP_
+
 #include <ranges>
+
+#include <algorithm>
 #include <string>
 #include <unordered_map>
 #include <utility>
@@ -20,8 +24,7 @@ class WordsInWordsDP : public IWordsInWord {
     }
   }
 
-  std::vector<WordsComposition> GetPossibleWords(
-      const std::vector<std::string>& words) override {
+  std::vector<WordsComposition> GetPossibleWords(const std::vector<std::string>& words) override {
     LoadWords(words);
 
     std::vector<WordsComposition> result;
@@ -31,8 +34,7 @@ class WordsInWordsDP : public IWordsInWord {
       word_composition[0].emplace_back("");
 
       for (const auto [index, letter] : std::views::enumerate(word)) {
-        const auto words_for_letter_iterator =
-            words_start_at_letter_.find(letter);
+        const auto words_for_letter_iterator = words_start_at_letter_.find(letter);
         if (words_for_letter_iterator == words_start_at_letter_.end()) continue;
 
         for (const auto& word_for_letter : words_for_letter_iterator->second) {
@@ -42,8 +44,7 @@ class WordsInWordsDP : public IWordsInWord {
           if (index_for_word > word.size()) continue;
 
           bool valid = true;
-          for (int index_of_word = 0;
-               std::cmp_less(index_of_word, word_for_letter.size());
+          for (int index_of_word = 0; std::cmp_less(index_of_word, word_for_letter.size());
                ++index_of_word) {
             if (word_for_letter[index_of_word] != word[index + index_of_word]) {
               valid = false;
@@ -52,11 +53,10 @@ class WordsInWordsDP : public IWordsInWord {
           }
           if (!valid) continue;
 
-          std::for_each(
-              word_composition[index].begin(), word_composition[index].end(),
-              [&](const auto& composition_at) {
-                word_composition[index_for_word].emplace_back(composition_at);
-              });
+          std::for_each(word_composition[index].begin(), word_composition[index].end(),
+                        [&](const auto& composition_at) {
+                          word_composition[index_for_word].emplace_back(composition_at);
+                        });
           word_composition[index_for_word].emplace_back(word_for_letter);
         }
       }
@@ -72,3 +72,5 @@ class WordsInWordsDP : public IWordsInWord {
  private:
   std::unordered_map<char, std::vector<std::string>> words_start_at_letter_;
 };
+
+#endif  // CODING_CHALLENGES_WORDS_IN_WORD_SRC_WORDSINWORDSDP_HPP_

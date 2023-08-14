@@ -3,9 +3,10 @@
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
-#ifndef BINARY_TREE_H_
-#define BINARY_TREE_H_
+#ifndef DATA_STRUCTURES_BINARY_TREE_SRC_BINARY_TREE_H_
+#define DATA_STRUCTURES_BINARY_TREE_SRC_BINARY_TREE_H_
 
+#include <cstdint>
 #include <queue>
 #include <stack>
 
@@ -131,4 +132,4 @@ class BinaryTree {
   uint32_t size_;
 };
 
-#endif  // BINARY_TREE_H_
+#endif  // DATA_STRUCTURES_BINARY_TREE_SRC_BINARY_TREE_H_

@@ -45,8 +45,7 @@ std::string CandyCrash1D::GreedyCrush(const std::string& candies) {
     const auto& candy_stack_top = candies_stack.top();
     candies_stack.pop();
 
-    std::string candy_stack_top_str =
-        std::string(candy_stack_top.amount, candy_stack_top.type);
+    std::string candy_stack_top_str = std::string(candy_stack_top.amount, candy_stack_top.type);
     remain_candies = candy_stack_top_str + remain_candies;
   }
 

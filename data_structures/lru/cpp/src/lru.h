@@ -3,8 +3,8 @@
  * License: https://github.com/FriendlyCodingPals/judgment-of-paris#license
  */
 
-#ifndef LRU_H_
-#define LRU_H_
+#ifndef DATA_STRUCTURES_LRU_CPP_SRC_LRU_H_
+#define DATA_STRUCTURES_LRU_CPP_SRC_LRU_H_
 
 #include <algorithm>
 #include <list>
@@ -20,8 +20,7 @@ class LRU {
 
   LRU() : max_capacity_(-1), elements_list_(), elements_map_() {}
 
-  explicit LRU(const int capacity)
-      : max_capacity_(capacity), elements_list_(), elements_map_() {}
+  explicit LRU(const int capacity) : max_capacity_(capacity), elements_list_(), elements_map_() {}
 
   /**
    * @brief Add the key and value to the LRU
@@ -94,4 +93,4 @@ class LRU {
   std::unordered_map<T, element_list_iterator_> elements_map_;
 };
 
-#endif  // LRU_H_
+#endif  // DATA_STRUCTURES_LRU_CPP_SRC_LRU_H_

@@ -3,15 +3,16 @@
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
-#ifndef STACK_H_
-#define STACK_H_
+#ifndef DATA_STRUCTURES_STACK_SRC_STACK_H_
+#define DATA_STRUCTURES_STACK_SRC_STACK_H_
 
 #include <algorithm>
+#include <cstdint>
 #include <iostream>
 
 template <class T>
 struct Node {
-  Node(const T& value) : data(value), next(nullptr), prev(nullptr) {}
+  explicit Node(const T& value) : data(value), next(nullptr), prev(nullptr) {}
   T data;
   Node<T>* next;
   Node<T>* prev;
@@ -20,41 +21,41 @@ struct Node {
 template <class T>
 class Stack {
  public:
-  Stack() : m_head(nullptr), m_tail(nullptr), m_size(0) {}
+  Stack() : head_(nullptr), tail_(nullptr), size_(0) {}
 
   ~Stack() {
-    while (m_tail) {
+    while (tail_) {
       Pop();
     }
   }
 
   void Append(const T value) {
-    if (!m_head) {
-      m_head = new Node(value);
-      m_tail = m_head;
+    if (!head_) {
+      head_ = new Node(value);
+      tail_ = head_;
     } else {
-      m_tail->next = new Node(value);
-      m_tail->next->prev = m_tail;
-      m_tail = m_tail->next;
+      tail_->next = new Node(value);
+      tail_->next->prev = tail_;
+      tail_ = tail_->next;
     }
 
-    ++m_size;
+    ++size_;
   }
 
   void Remove(const T value) {
-    auto node = m_head;
+    auto node = head_;
     while (node) {
       if (node->data == value) {
-        if (node == m_head) {
-          m_head = node->next;
-          m_head->prev = nullptr;
+        if (node == head_) {
+          head_ = node->next;
+          head_->prev = nullptr;
           delete node;
-          --m_size;
+          --size_;
           return;
         } else {
           node->prev = node->next;
           delete node;
-          --m_size;
+          --size_;
           return;
         }
       }
@@ -62,34 +63,32 @@ class Stack {
   }
 
   void Pop() {
-    if (m_head == nullptr || m_tail == nullptr) return;
+    if (head_ == nullptr || tail_ == nullptr) return;
 
-    auto node = m_tail;
-    m_tail = m_tail->prev;
+    auto node = tail_;
+    tail_ = tail_->prev;
     delete node;
-    --m_size;
+    --size_;
   }
 
   T Head() {
-    if (!m_head)
-      throw std::runtime_error("try to get the head of an empty stack.");
+    if (!head_) throw std::runtime_error("try to get the head of an empty stack.");
 
-    return m_head->data;
+    return head_->data;
   }
 
   T Tail() {
-    if (!m_head || !m_tail)
-      throw std::runtime_error("try to get the head of an empty stack.");
+    if (!head_ || !tail_) throw std::runtime_error("try to get the head of an empty stack.");
 
-    return m_tail->data;
+    return tail_->data;
   }
 
-  uint32_t Size() { return m_size; }
+  uint32_t Size() { return size_; }
 
  private:
-  Node<T>* m_head;
-  Node<T>* m_tail;
-  uint32_t m_size;
+  Node<T>* head_;
+  Node<T>* tail_;
+  uint32_t size_;
 };
 
-#endif  // STACK_H_
+#endif  // DATA_STRUCTURES_STACK_SRC_STACK_H_

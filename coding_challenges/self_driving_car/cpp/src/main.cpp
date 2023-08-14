@@ -28,17 +28,14 @@ struct PathPoint {
 };
 
 struct Compare {
-  bool operator()(const PathPoint& a, const PathPoint& b) {
-    return a.cost > b.cost;
-  }
+  bool operator()(const PathPoint& a, const PathPoint& b) { return a.cost > b.cost; }
 };
 
 const std::vector<Point> kDefaultMovs = {{1, 0}, {0, 1}};
 
 class SelfDrivingCar {
  public:
-  explicit SelfDrivingCar(const std::vector<Point>& movs = kDefaultMovs)
-      : movs_(movs) {}
+  explicit SelfDrivingCar(const std::vector<Point>& movs = kDefaultMovs) : movs_(movs) {}
 
   int CalculateTime(const std::vector<std::vector<int>>& path) {
     if (!path.size()) return -1;
@@ -46,11 +43,9 @@ class SelfDrivingCar {
     int max_y = path.size();
     int max_x = path[0].size();
 
-    std::vector<std::vector<int>> best_cost(max_y,
-                                            std::vector<int>(max_x, INT32_MAX));
+    std::vector<std::vector<int>> best_cost(max_y, std::vector<int>(max_x, INT32_MAX));
 
-    std::priority_queue<PathPoint, std::vector<PathPoint>, Compare>
-        min_path_point;
+    std::priority_queue<PathPoint, std::vector<PathPoint>, Compare> min_path_point;
     min_path_point.emplace(path[0][0], Point(0, 0));
 
     while (!min_path_point.empty()) {
@@ -71,9 +66,8 @@ class SelfDrivingCar {
           continue;
 
         Point new_point(path_point.at.x + mov.x, path_point.at.y + mov.y);
-        min_path_point.emplace(
-            std::max(path_point.cost, path[new_point.y][new_point.x]),
-            new_point);
+        min_path_point.emplace(std::max(path_point.cost, path[new_point.y][new_point.x]),
+                               new_point);
       }
     }
 
@@ -95,8 +89,7 @@ int main(int argc, char** argv) {
   std::string line;
   while (getline(infile, line)) {
     std::istringstream ss(line);
-    path.emplace_back(std::istream_iterator<int>{ss},
-                      std::istream_iterator<int>{});
+    path.emplace_back(std::istream_iterator<int>{ss}, std::istream_iterator<int>{});
   }
 
   SelfDrivingCar self_driving_car;

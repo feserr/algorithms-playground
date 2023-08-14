@@ -3,8 +3,8 @@
  * License: https://github.com/feserr/algorithms-playground#license
  */
 
-#ifndef ALGORITHMS_GRAPHS_BREADTH_FIRST_SEARCH_SRC_GRAPH_H_
-#define ALGORITHMS_GRAPHS_BREADTH_FIRST_SEARCH_SRC_GRAPH_H_
+#ifndef ALGORITHMS_GRAPHS_DEPTH_FIRST_SEARCH_SRC_GRAPH_H_
+#define ALGORITHMS_GRAPHS_DEPTH_FIRST_SEARCH_SRC_GRAPH_H_
 
 #include <inttypes.h>
 
@@ -18,9 +18,7 @@ class Graph {
  public:
   Graph() : num_verts_(0), nodes_() {}
 
-  explicit Graph(uint32_t num_verts) : num_verts_(num_verts) {
-    nodes_.resize(num_verts);
-  }
+  explicit Graph(uint32_t num_verts) : num_verts_(num_verts) { nodes_.resize(num_verts); }
 
   void AddEdge(int vertice, int value) { nodes_[vertice].emplace_back(value); }
 
@@ -53,4 +51,4 @@ class Graph {
   std::vector<std::vector<int>> nodes_;
 };
 
-#endif  // ALGORITHMS_GRAPHS_BREADTH_FIRST_SEARCH_SRC_GRAPH_H_
+#endif  // ALGORITHMS_GRAPHS_DEPTH_FIRST_SEARCH_SRC_GRAPH_H_

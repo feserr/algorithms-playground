@@ -6,9 +6,8 @@
 #ifndef CODING_CHALLENGES_WORDS_IN_WORD_SRC_WORDSINWORDSDP_HPP_
 #define CODING_CHALLENGES_WORDS_IN_WORD_SRC_WORDSINWORDSDP_HPP_
 
-#include <ranges>
-
 #include <algorithm>
+#include <ranges>
 #include <string>
 #include <unordered_map>
 #include <utility>
@@ -37,31 +36,28 @@ class WordsInWordsDP : public IWordsInWord {
         const auto words_for_letter_iterator = words_start_at_letter_.find(letter);
         if (words_for_letter_iterator == words_start_at_letter_.end()) continue;
 
+        // Check the target in the dictionary.
         for (const auto& word_for_letter : words_for_letter_iterator->second) {
+          // Continue if the word is the same as the target.
           if (word_for_letter == word) continue;
 
+          // Continue if the word is greater than the target.
           int index_for_word = index + std::ssize(word_for_letter);
           if (index_for_word > word.size()) continue;
 
-          bool valid = true;
-          for (int index_of_word = 0; std::cmp_less(index_of_word, word_for_letter.size());
-               ++index_of_word) {
-            if (word_for_letter[index_of_word] != word[index + index_of_word]) {
-              valid = false;
-              break;
-            }
-          }
-          if (!valid) continue;
+          // Continue if the word is not part of the substring of the target.
+          const auto s_substr = word.substr(index, size(word_for_letter));
+          if (s_substr != word_for_letter) continue;
 
           std::for_each(word_composition[index].begin(), word_composition[index].end(),
                         [&](const auto& composition_at) {
-                          word_composition[index_for_word].emplace_back(composition_at);
+                          auto new_composition = composition_at + " " + word_for_letter;
+                          word_composition[index_for_word].emplace_back(new_composition);
                         });
-          word_composition[index_for_word].emplace_back(word_for_letter);
         }
       }
 
-      if (!word_composition[word.size()].empty()) {
+      if (!word_composition[std::size(word)].empty()) {
         result.emplace_back(word, word_composition[word.size()]);
       }
     }
